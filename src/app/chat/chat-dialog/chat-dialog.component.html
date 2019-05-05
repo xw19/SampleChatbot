@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>Treadwill Bot</h1>
+
+
+  <ng-container *ngFor="let message of messages | async">
+    <div class="row">
+      <div class="message column column-50" [ngClass]="{ 'from': message.sentBy == 'bot',
+                                        'to column-offset-50': message.sentBy == 'user'}">
+
+      {{message.content}}
+    </div>
+    </div>
+  </ng-container>
+
+  <div class="row">
+    <form class="column">
+      <label for="message">Your Message</label>
+      <input [(ngModel)]="formValue" (keyup.enter)="sendMessage()" type="text" name="message"><br>
+      <button class="button" (click)="sendMessage()">Send</button>
+    </form>
+  </div>
+</div>
